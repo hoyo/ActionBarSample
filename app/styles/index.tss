@@ -1,0 +1,19 @@
+".container": {
+	fullscreen: true
+},
+MenuItem: {
+	showAsAction: Ti.Android.SHOW_AS_ACTION_IF_ROOM,
+},
+'#menu1': {
+	icon: 'images/action_about.png',
+	title: 'About'
+},
+'#menu2': {
+	icon: 'images/action_settings.png',
+	title: 'Settings'
+},
+"Label": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	color: "#000"
+}
