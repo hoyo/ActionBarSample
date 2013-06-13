@@ -15,7 +15,4 @@ TableViewRow: {
 	font: {
 		fontSize: '18sp'
 	}
-},
-MenuItem: {
-	onClick: "doClickMenu"
 }

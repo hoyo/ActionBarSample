@@ -9,7 +9,6 @@ function Controller() {
     });
     $.__views.win1 = Ti.UI.createWindow({
         title: "Window 1",
-        layout: "vertical",
         id: "win1"
     });
     $.__views.__alloyId11 = Ti.UI.createLabel({
@@ -31,7 +30,6 @@ function Controller() {
     $.__views.main.addTab($.__views.tab1);
     $.__views.win2 = Ti.UI.createWindow({
         title: "Window 2",
-        layout: "vertical",
         id: "win2"
     });
     $.__views.__alloyId12 = Ti.UI.createLabel({
