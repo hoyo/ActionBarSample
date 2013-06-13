@@ -1,5 +1,6 @@
-function doClickMenu(e) {
-  alert('menu was clicked: ' + e.source.title);
-}
+$.table.addEventListener('click', function(e){
+	var controller = Alloy.createController(e.row.value);
+	controller.getView().open();
+});
 
 $.index.open();

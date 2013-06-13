@@ -1,9 +1,9 @@
 <Alloy>
 	<Window class="container">
-		<Menu id="menu" platform="android">
-			<MenuItem id="menu1" onClick="doClickMenu" />
-			<MenuItem id="menu2" onClick="doClickMenu" />
-		</Menu>
-		<Label id="label">Hello, World</Label>
+		<TableView id="table">
+			<TableViewRow title="Actions & Overflow" value="actions"/>
+			<TableViewRow title="Tabs" />
+			<TableViewRow title="Other" />
+		</TableView>
 	</Window>
 </Alloy>

@@ -1,51 +1,61 @@
 function Controller() {
-    function doClickMenu(e) {
-        alert("menu was clicked: " + e.source.title);
-    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
-    var $ = this, exports = {};
-    $.__views.index = A$(Ti.UI.createWindow({
-        fullscreen: !0,
+    arguments[0] ? arguments[0]["__parentSymbol"] : null;
+    arguments[0] ? arguments[0]["$model"] : null;
+    var $ = this;
+    var exports = {};
+    $.__views.index = Ti.UI.createWindow({
+        fullscreen: false,
         id: "index"
-    }), "Window", null);
-    $.addTopLevelView($.__views.index);
-    $.__views.index.activity.onCreateOptionsMenu = function(e) {
-        var __alloyId2 = {
-            showAsAction: Ti.Android.SHOW_AS_ACTION_IF_ROOM,
-            icon: "images/action_about.png",
-            title: "About",
-            id: "menu1"
-        };
-        $.__views.menu1 = A$(e.menu.add(_.pick(__alloyId2, [ "itemId", "groupId", "title", "order" ])), "MenuItem", e.menu);
-        _.each(__alloyId2, function(v, k) {
-            $.__views.menu1[k] = v;
-        });
-        $.__views.menu1.on("click", doClickMenu);
-        var __alloyId3 = {
-            showAsAction: Ti.Android.SHOW_AS_ACTION_IF_ROOM,
-            icon: "images/action_settings.png",
-            title: "Settings",
-            id: "menu2"
-        };
-        $.__views.menu2 = A$(e.menu.add(_.pick(__alloyId3, [ "itemId", "groupId", "title", "order" ])), "MenuItem", e.menu);
-        _.each(__alloyId3, function(v, k) {
-            $.__views.menu2[k] = v;
-        });
-        $.__views.menu2.on("click", doClickMenu);
-    };
-    $.__views.label = A$(Ti.UI.createLabel({
-        width: Ti.UI.SIZE,
-        height: Ti.UI.SIZE,
-        color: "#000",
-        text: "Hello, World",
-        id: "label"
-    }), "Label", $.__views.index);
-    $.__views.index.add($.__views.label);
+    });
+    $.__views.index && $.addTopLevelView($.__views.index);
+    $.__views.__alloyId6 = Ti.UI.createTableViewRow({
+        width: Ti.UI.FILL,
+        height: "48dp",
+        font: {
+            fontSize: "18sp"
+        },
+        title: "Actions & Overflow",
+        value: "actions",
+        id: "__alloyId6"
+    });
+    var __alloyId7 = [];
+    __alloyId7.push($.__views.__alloyId6);
+    $.__views.__alloyId8 = Ti.UI.createTableViewRow({
+        width: Ti.UI.FILL,
+        height: "48dp",
+        font: {
+            fontSize: "18sp"
+        },
+        title: "Tabs",
+        id: "__alloyId8"
+    });
+    __alloyId7.push($.__views.__alloyId8);
+    $.__views.__alloyId9 = Ti.UI.createTableViewRow({
+        width: Ti.UI.FILL,
+        height: "48dp",
+        font: {
+            fontSize: "18sp"
+        },
+        title: "Other",
+        id: "__alloyId9"
+    });
+    __alloyId7.push($.__views.__alloyId9);
+    $.__views.table = Ti.UI.createTableView({
+        data: __alloyId7,
+        id: "table"
+    });
+    $.__views.index.add($.__views.table);
+    exports.destroy = function() {};
     _.extend($, $.__views);
+    $.table.addEventListener("click", function(e) {
+        var controller = Alloy.createController(e.row.value);
+        controller.getView().open();
+    });
     $.index.open();
     _.extend($, exports);
 }
 
-var Alloy = require("alloy"), Backbone = Alloy.Backbone, _ = Alloy._, A$ = Alloy.A;
+var Alloy = require("alloy"), Backbone = Alloy.Backbone, _ = Alloy._;
 
 module.exports = Controller;

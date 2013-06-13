@@ -1,13 +1,13 @@
 <?xml version="1.0" ?><manifest android:versionCode="1" android:versionName="1" package="net.hoyohoyo.sandbox.actionbarsample" xmlns:android="http://schemas.android.com/apk/res/android">
-	<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="11"/>
+	<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="17"/>
 
 	<!-- TI_MANIFEST -->
 
-	<application android:debuggable="false" android:icon="@drawable/appicon" android:label="ActionBarSample" android:name="ActionbarsampleApplication" android:theme="@android:style/Theme.DeviceDefault.Light">
+	<application android:debuggable="false" android:icon="@drawable/appicon" android:label="ActionBarSample" android:name="ActionbarsampleApplication" android:theme="@android:style/Theme.Holo.Light">
 
 		<!-- TI_APPLICATION -->
 
-		<activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="ActionBarSample" android:name=".ActionbarsampleActivity" android:theme="@style/Theme.Titanium">
+		<activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="ActionBarSample" android:name=".ActionbarsampleActivity" android:theme="@android:style/Theme.Holo.Light.NoActionBar">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
 				<category android:name="android.intent.category.LAUNCHER"/>

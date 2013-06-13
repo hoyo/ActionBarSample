@@ -1,0 +1,10 @@
+<Alloy>
+	<Window id="main" class="container">
+		<Menu id="menu" platform="android">
+			<MenuItem id="menu1" class="action" />
+			<MenuItem id="menu2" class="action" />
+			<MenuItem id="menu3" class="overflow" />
+		</Menu>
+		<Label>Action Buttons</Label>>
+	</Window>
+</Alloy>
