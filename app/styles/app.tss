@@ -1,0 +1,18 @@
+".container": {
+	fullscreen: false
+},
+"Label": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	color: "#000",
+	font: {
+		fontSize: '18sp'
+	}
+},
+TableViewRow: {
+	width: Ti.UI.FILL,
+	height: '48dp',
+	font: {
+		fontSize: '18sp'
+	}
+}
