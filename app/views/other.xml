@@ -1,0 +1,5 @@
+<Alloy>
+	<Window id="main" class="container">
+		<Button onClick="changeTitle">Title</Button>
+	</Window>
+</Alloy>
