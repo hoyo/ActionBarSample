@@ -1,9 +1,9 @@
 <Alloy>
-	<Window class="container">
+	<Window class="container" exitOnClose="true">
 		<TableView id="table">
 			<TableViewRow title="Actions & Overflow" value="actions"/>
-			<TableViewRow title="Tabs" />
-			<TableViewRow title="Other" />
+			<TableViewRow title="Tabs" value="tabs"/>
+			<TableViewRow title="Other" value="other"/>
 		</TableView>
 	</Window>
 </Alloy>

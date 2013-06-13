@@ -7,7 +7,7 @@
 
 		<!-- TI_APPLICATION -->
 
-		<activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="ActionBarSample" android:name=".ActionbarsampleActivity" android:theme="@android:style/Theme.Holo.Light.NoActionBar">
+		<activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="ActionBarSample" android:name=".ActionbarsampleActivity" android:theme="@style/Theme.Titanium">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
 				<category android:name="android.intent.category.LAUNCHER"/>

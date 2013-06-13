@@ -6,6 +6,7 @@ function Controller() {
     var exports = {};
     $.__views.index = Ti.UI.createWindow({
         fullscreen: false,
+        exitOnClose: "true",
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
@@ -28,6 +29,7 @@ function Controller() {
             fontSize: "18sp"
         },
         title: "Tabs",
+        value: "tabs",
         id: "__alloyId8"
     });
     __alloyId7.push($.__views.__alloyId8);
@@ -38,6 +40,7 @@ function Controller() {
             fontSize: "18sp"
         },
         title: "Other",
+        value: "other",
         id: "__alloyId9"
     });
     __alloyId7.push($.__views.__alloyId9);

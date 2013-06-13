@@ -5,6 +5,6 @@
 			<MenuItem id="menu2" class="action" />
 			<MenuItem id="menu3" class="overflow" />
 		</Menu>
-		<Label>Action Buttons</Label>>
+		<Label>Action Buttons</Label>
 	</Window>
 </Alloy>

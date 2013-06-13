@@ -31,7 +31,6 @@ function Controller() {
         var __alloyId3 = {
             onClick: "doClickMenu",
             showAsAction: Ti.Android.SHOW_AS_ACTION_NEVER,
-            icon: "images/action_settings.png",
             title: "Help",
             id: "menu3"
         };
