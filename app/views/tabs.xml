@@ -1,0 +1,14 @@
+<Alloy>
+	<TabGroup id="main">
+		<Tab id="tab1">
+			<Window id="win1">
+				<Label>Tab 1</Label>
+			</Window>
+		</Tab>
+		<Tab id="tab2">
+			<Window id="win2">
+				<Label>Tab 2</Label>
+			</Window>
+		</Tab>
+	</TabGroup>
+</Alloy>

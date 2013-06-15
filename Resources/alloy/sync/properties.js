@@ -1,30 +1,46 @@
-function getUniqueId(id) {
-    if (!id || _.contains(idList, id)) id = getUniqueId(uniqueIdCounter++);
-    idList.push(id);
-    return id;
+function S4() {
+    return (0 | 65536 * (1 + Math.random())).toString(16).substring(1);
 }
 
-function Sync(model, method, opts) {
-    var prefix = model.config.adapter.collection_name ? model.config.adapter.collection_name : "default", regex = new RegExp("^(" + prefix + ")\\-(\\d+)$");
-    if (method === "read") if (opts.parse) {
+function guid() {
+    return S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4();
+}
+
+function Sync(method, model, opts) {
+    var prefix = model.config.adapter.collection_name ? model.config.adapter.collection_name : "default";
+    var regex = new RegExp("^(" + prefix + ")\\-(.+)$");
+    var resp = null;
+    if ("read" === method) if (opts.parse) {
         var list = [];
         _.each(TAP.listProperties(), function(prop) {
             var match = prop.match(regex);
-            match !== null && list.push(TAP.getObject(prop));
+            null !== match && list.push(TAP.getObject(prop));
         });
         model.reset(list);
-        var maxId = _.max(_.pluck(list, "id"));
-        model.maxId = (_.isFinite(maxId) ? maxId : 0) + 1;
+        resp = list;
     } else {
-        var obj = TAP.getObject(prefix + "-" + model.get("id"));
+        var obj = TAP.getObject(prefix + "-" + model.id);
         model.set(obj);
-    } else if (method === "create" || method === "update") TAP.setObject(prefix + "-" + model.get("id"), model.toJSON() || {}); else if (method === "delete") {
-        TAP.removeProperty(prefix + "-" + model.get("id"));
+        resp = model.toJSON();
+    } else if ("create" === method || "update" === method) {
+        if (!model.id) {
+            model.id = guid();
+            model.set(model.idAttribute, model.id);
+        }
+        TAP.setObject(prefix + "-" + model.id, model.toJSON() || {});
+        resp = model.toJSON();
+    } else if ("delete" === method) {
+        TAP.removeProperty(prefix + "-" + model.id);
         model.clear();
+        resp = model.toJSON();
     }
+    if (resp) {
+        _.isFunction(opts.success) && opts.success(resp);
+        "read" === method && model.trigger("fetch");
+    } else _.isFunction(opts.error) && opts.error(resp);
 }
 
-var Alloy = require("alloy"), _ = require("alloy/underscore")._, TAP = Ti.App.Properties, idList = [], uniqueIdCounter = 1;
+var Alloy = require("alloy"), _ = require("alloy/underscore")._, TAP = Ti.App.Properties;
 
 module.exports.sync = Sync;
 
@@ -32,7 +48,6 @@ module.exports.beforeModelCreate = function(config) {
     config = config || {};
     config.columns = config.columns || {};
     config.defaults = config.defaults || {};
-    config.columns.id = "Int";
-    config.defaults.id = getUniqueId();
+    ("undefined" == typeof config.columns.id || null === config.columns.id) && (config.columns.id = "String");
     return config;
 };
